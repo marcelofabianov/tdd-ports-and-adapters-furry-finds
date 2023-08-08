@@ -1,0 +1,28 @@
+{
+  "name": "marcelofabianov/furry-finds",
+  "type": "project",
+  "license": "MIT",
+  "description": "Furry Finds",
+  "keywords": [
+    "fur",
+    "friend",
+    "market"
+  ],
+  "require": {},
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "FurryFinds\\App\\": "src/App/",
+      "FurryFinds\\Domain\\": "src/Domain/",
+      "FurryFinds\\Services\\": "src/Services/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {},
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

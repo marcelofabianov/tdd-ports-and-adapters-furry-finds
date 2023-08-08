@@ -1,0 +1,56 @@
+version: '3.7'
+
+services:
+  http:
+    container_name: furry_http
+    image: nginx:latest
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./public:/var/www/html/public
+      - ./_docker/local/http/default.conf:/etc/nginx/conf.d/default.conf
+      - ./_docker/local/http/log:/var/log/nginx
+    networks:
+      - furry_network
+
+  app:
+    container_name: furry_app
+    build:
+      context: _docker/local/php-fpm
+      dockerfile: Dockerfile
+    image: fur-friend-market/php-fpm
+    restart: always
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    networks:
+      - furry_network
+    ports:
+      - '9000:9000'
+      - '9003:9003'
+    depends_on:
+      - http
+
+  db:
+    container_name: furry_db
+    image: postgres:15.2
+    restart: always
+    environment:
+      POSTGRES_USER: '${furry_DB_USERNAME:-user}'
+      POSTGRES_PASSWORD: '${furry_DB_PASSWORD:-secret}'
+      POSTGRES_DB: '${furry_DB_DATABASE:-furry_db}'
+    volumes:
+      - 'furry_db:/var/lib/postgresql/data'
+    ports:
+      - "5432:5432"
+    networks:
+      - furry_network
+
+networks:
+  furry_network:
+    driver: bridge
+
+volumes:
+  furry_db:
+    driver: local
