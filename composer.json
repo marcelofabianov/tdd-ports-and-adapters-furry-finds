@@ -4,21 +4,30 @@
   "license": "MIT",
   "description": "Furry Finds",
   "keywords": [
-    "fur",
-    "friend",
-    "market"
+    "furry",
+    "finds"
   ],
+  "require": {
+    "php": "^8.2",
+    "ext-bcmath": "*",
+    "ext-json": "*",
+    "ext-pdo": "*"
+  },
   "require-dev": {
     "pestphp/pest": "^2.13",
     "mockery/mockery": "^1.6",
     "pestphp/pest-plugin-faker": "^2.0",
-    "pestphp/pest-plugin-type-coverage": "^2.0"
+    "pestphp/pest-plugin-type-coverage": "^2.0",
+    "pyrech/composer-changelogs": "^2.1",
+    "ergebnis/composer-normalize": "^2.34",
+    "captainhook/captainhook": "^5.16",
+    "roave/security-advisories": "dev-latest",
+    "phpstan/phpstan": "^1.10",
+    "laravel/pint": "^1.10"
   },
   "autoload": {
     "psr-4": {
-      "FurryFinds\\App\\": "src/App/",
-      "FurryFinds\\Domain\\": "src/Domain/",
-      "FurryFinds\\Services\\": "src/Services/"
+      "FurryFinds\\": "src/"
     }
   },
   "autoload-dev": {
@@ -26,12 +35,18 @@
       "Tests\\": "tests/"
     }
   },
-  "scripts": {},
+  "scripts": {
+    "post-autoload-dump": [
+      "vendor/bin/captainhook install -f -s"
+    ]
+  },
   "minimum-stability": "stable",
   "prefer-stable": true,
   "config": {
     "allow-plugins": {
-      "pestphp/pest-plugin": true
+      "pestphp/pest-plugin": true,
+      "pyrech/composer-changelogs": true,
+      "ergebnis/composer-normalize": true
     }
   }
 }

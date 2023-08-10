@@ -96,7 +96,7 @@ RUN zsh
 
 COPY .zshrc /home/developer/.zshrc
 
-WORKDIR /var/www/saturno
+WORKDIR /var/www
 
 EXPOSE 9000
 EXPOSE 9003
