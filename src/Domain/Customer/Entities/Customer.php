@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace FurryFinds\Domain\Product\Entities;
+namespace FurryFinds\Domain\Customer\Entities;
 
-use FurryFinds\Domain\Product\Interfaces\Entities\IProductCategory;
+use FurryFinds\Domain\Customer\Interfaces\Entities\ICustomer;
 use JsonException;
 
-final readonly class ProductCategory implements IProductCategory
+final readonly class Customer implements ICustomer
 {
     public function toArray(): array
     {
