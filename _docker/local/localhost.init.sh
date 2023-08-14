@@ -18,13 +18,13 @@ docker exec -it furry_app composer install && \
 echo ".: Lint :." && \
 # -------------------------------------------------------------------------------------------------- #
 #docker exec -it furry_app php ./vendor/bin/phpcs --standard=PSR12 ./src && \
-#docker exec -it furry_app php ./vendor/bin/psalm
+#docker exec -it furry_app php ./vendor/bin/phpstan analyse ./src --level 8 && \
 # -------------------------------------------------------------------------------------------------- #
 echo ".: Testes :." && \
 # -------------------------------------------------------------------------------------------------- #
 #docker exec -it furry_app php vendor/bin/pest --compact --stop-on-error --display-errors --display-skipped
 # -------------------------------------------------------------------------------------------------- #
-echo ".: Fake :." && \
+echo ".: Seeders :." && \
 # -------------------------------------------------------------------------------------------------- #
 # command para executar SQL para popular o banco de dados
 # -------------------------------------------------------------------------------------------------- #
