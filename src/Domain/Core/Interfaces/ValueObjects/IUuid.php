@@ -8,11 +8,11 @@ use FurryFinds\Domain\Core\Interfaces\IValueObject;
 
 interface IUuid extends IValueObject
 {
-    public function equals(IUuid $other): bool;
+    public function equals(self $other): bool;
 
-    public static function random(): IUuid;
+    public static function random(): self;
 
     public static function validate(string $value): bool;
 
-    public static function create(string $value): IUuid;
+    public static function create(string $value): self;
 }
