@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use FurryFinds\Domain\Core\Exceptions\FurryDomainCoreException;
 use FurryFinds\Domain\Core\Interfaces\ValueObjects\IUuid;
 use FurryFinds\Domain\Core\ValueObjects\Uuid;
-use FurryFinds\Domain\Core\Exceptions\FurryDomainCoreException;
 
 test('Deve retornar true quando validado um UUID valido')
     ->group('Uuid', 'ValueObject', 'Domain', 'Core', 'Unit')
