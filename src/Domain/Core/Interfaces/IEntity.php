@@ -8,7 +8,7 @@ interface IEntity extends \JsonSerializable
 {
     public function toArray(): array;
 
-    public function jsonSerialize(): array;
+    public function jsonSerialize(): string;
 
     public function __toString(): string;
 }
