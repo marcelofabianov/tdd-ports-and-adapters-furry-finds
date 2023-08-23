@@ -12,7 +12,8 @@
     "ext-bcmath": "*",
     "ext-json": "*",
     "ext-pdo": "*",
-    "ramsey/uuid": "^4.7"
+    "ramsey/uuid": "^4.7",
+    "nesbot/carbon": "^2.68"
   },
   "require-dev": {
     "pestphp/pest": "^2.13",
@@ -34,7 +35,10 @@
   "autoload-dev": {
     "psr-4": {
       "Tests\\": "tests/"
-    }
+    },
+    "files": [
+      "src/func.php"
+    ]
   },
   "scripts": {
     "post-autoload-dump": [
