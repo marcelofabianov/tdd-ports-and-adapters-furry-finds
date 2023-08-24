@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace FurryFinds\Domain\Customer\Entities;
 
-use FurryFinds\Domain\Core\Exceptions\FurryDomainCoreException;
-use FurryFinds\Domain\Core\Interfaces\Exceptions\IFurryDomainCoreException;
 use FurryFinds\Domain\Core\Interfaces\ValueObjects\ICreatedAt;
 use FurryFinds\Domain\Core\Interfaces\ValueObjects\IEmail;
 use FurryFinds\Domain\Core\Interfaces\ValueObjects\IInactivatedAt;
