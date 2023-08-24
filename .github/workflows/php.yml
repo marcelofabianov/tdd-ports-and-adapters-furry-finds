@@ -16,8 +16,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2'
+        php-version: ${{ matrix.php-versions }}
+        extensions: mbstring, simplexml, dom
+        coverage: xdebug
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -32,8 +37,8 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run:  composer install --no-progress --prefer-dist --optimize-autoloader --no-suggest
 
     - name: PestPHP (Run Pest Tests)
       uses: NWBY/pest-action@v1.2.0
-      run: ./vendor/bin/pest
+      run: vendor/bin/pest
