@@ -6,6 +6,7 @@ namespace FurryFinds\Domain\Core\ValueObjects;
 
 use FurryFinds\Domain\Core\Enums\RegistrationDocumentTypeEnum;
 use FurryFinds\Domain\Core\Exceptions\FurryDomainCoreException;
+use FurryFinds\Domain\Core\Interfaces\Exceptions\IFurryDomainCoreException;
 use FurryFinds\Domain\Core\Interfaces\ValueObjects\IRegistrationDocument;
 
 final class RegistrationDocument implements IRegistrationDocument
@@ -74,13 +75,13 @@ final class RegistrationDocument implements IRegistrationDocument
         return preg_replace(pattern: '/[^0-9]/', replacement: '', subject: $value);
     }
 
-    public static function random(RegistrationDocumentTypeEnum $type = RegistrationDocumentTypeEnum::CNPJ): IRegistrationDocument
+    public static function random(RegistrationDocumentTypeEnum $type = RegistrationDocumentTypeEnum::CPF): IRegistrationDocument
     {
-        if (RegistrationDocumentTypeEnum::CPF) {
-            return self::create(Cpf::random()->numbers());
+        if (RegistrationDocumentTypeEnum::CNPJ) {
+            return self::create(Cnpj::random()->numbers());
         }
 
-        return self::create(Cnpj::random()->numbers());
+        return self::create(Cpf::random()->numbers());
     }
 
     public static function validate(int|string $value): bool
@@ -96,6 +97,9 @@ final class RegistrationDocument implements IRegistrationDocument
         return false;
     }
 
+    /**
+     * @throws IFurryDomainCoreException
+     */
     public static function create(int|string $value): IRegistrationDocument
     {
         if (Cnpj::validate($value)) {

@@ -12,8 +12,10 @@ use FurryFinds\Domain\Core\Interfaces\ValueObjects\IInactivatedAt;
 use FurryFinds\Domain\Core\Interfaces\ValueObjects\IRegistrationDocument;
 use FurryFinds\Domain\Core\Interfaces\ValueObjects\IUpdatedAt;
 use FurryFinds\Domain\Core\Interfaces\ValueObjects\IUuid;
+use FurryFinds\Domain\Customer\Exceptions\FurryDomainCustomerException;
 use FurryFinds\Domain\Customer\Interfaces\Dto\ICreateCustomerDto;
 use FurryFinds\Domain\Customer\Interfaces\Entities\ICustomer;
+use FurryFinds\Domain\Customer\Interfaces\Exceptions\IFurryDomainCustomerException;
 use JsonException;
 
 final readonly class Customer implements ICustomer
@@ -63,7 +65,7 @@ final readonly class Customer implements ICustomer
     }
 
     /**
-     * @throws IFurryDomainCoreException
+     * @throws IFurryDomainCustomerException
      */
     public static function create(ICreateCustomerDto $dto): ICustomer
     {
@@ -79,8 +81,8 @@ final readonly class Customer implements ICustomer
                 $dto->email,
                 $dto->password,
             );
-        } catch (\Exception) {
-            throw FurryDomainCoreException::invalidArgument('Invalid Invalid argument');
+        } catch (\Exception $exception) {
+            throw FurryDomainCustomerException::invalidArgument($exception->getMessage());
         }
     }
 }

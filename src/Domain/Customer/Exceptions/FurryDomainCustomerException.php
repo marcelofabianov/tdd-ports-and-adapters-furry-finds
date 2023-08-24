@@ -9,4 +9,8 @@ use FurryFinds\Domain\Customer\Interfaces\Exceptions\IFurryDomainCustomerExcepti
 
 final class FurryDomainCustomerException extends FurryDomainException implements IFurryDomainCustomerException
 {
+    public static function invalidArgument(string $message): self
+    {
+        return new self($message);
+    }
 }
