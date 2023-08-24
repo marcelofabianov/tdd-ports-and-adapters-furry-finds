@@ -34,6 +34,3 @@ jobs:
 
     - name: PestPHP (Run Pest Tests)
       uses: NWBY/pest-action@v1.2.0
-
-    - name: OSKAR-phpstan
-      uses: OskarStark/phpstan-ga@1.9.0
