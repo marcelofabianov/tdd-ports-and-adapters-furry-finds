@@ -31,7 +31,11 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
+      with:
+        php-version: '8.2'
       run: composer install --prefer-dist --no-progress
 
     - name: PestPHP (Run Pest Tests)
+      with:
+        php-version: '8.2'
       uses: NWBY/pest-action@v1.2.0
